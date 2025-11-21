@@ -1,0 +1,125 @@
+.projects{
+  padding:3.5rem 0 4.5rem;
+}
+.projects__title{
+  text-align:center;
+  font-size:1.9rem;
+  margin-bottom:1.8rem;
+  color:var(--color-white);
+}
+.projects__grid{
+  width:var(--container-width-lg);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:1.4rem;
+}
+.project-card{
+  background: transparent;
+  border-radius:12px;
+  overflow:hidden; /* ensure image fills card without spilling */
+  position:relative;
+  transition: transform 500ms cubic-bezier(.22,.9,.3,1), box-shadow 350ms;
+}
+.project-card__inner{
+  position:relative;
+  border-radius:12px;
+  padding:0; /* remove inner padding so image can fill entire card */
+  min-height:220px;
+  background: transparent;
+}
+
+.project-card__meta{ color:var(--color-bg); font-weight:600 }
+
+.project-card__content{
+  z-index:2;
+  position:relative;
+}
+.project-card__content h3{ margin-bottom:0.6rem; color:var(--color-white); text-align:center }
+.project-card__desc{ color:var(--color-light); text-align:center; margin-bottom:1.2rem }
+
+/* image is hidden until hover */
+.project-card__imgWrap{
+  /* fill the whole card */
+  position:absolute;
+  inset:0; /* top:0; right:0; bottom:0; left:0 */
+  display:block;
+  background: transparent;
+}
+.project__img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* cover entire card */
+  display:block;
+}
+
+/* overlay that appears on hover or when card.active */
+.project-card__overlay{
+  position:absolute;
+  inset:0; /* cover entire card */
+  border-radius:inherit;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,0); /* invisible by default */
+  color: var(--color-white);
+  opacity:0;
+  transition: background 360ms ease, opacity 360ms ease;
+  pointer-events:none;
+}
+.project-card__overlay .overlay-content{ padding:1rem; text-align:center }
+.project-card__overlay h3{ margin-bottom:0.4rem }
+.project-card__overlay p{ margin:0; color:inherit }
+
+/* Hover: reveal image, change bg and text color, zoom card */
+.project-card:hover{
+  transform: scale(1.03) translateY(-6px);
+  z-index:5;
+  box-shadow: 0 28px 60px rgba(0,0,0,0.45);
+}
+.project-card:hover .project-card__imgWrap{
+  transform: scale(1.02);
+}
+.project-card:hover .project-card__overlay{
+  opacity:1;
+  background: var(--color-primary-variant);
+  pointer-events:auto;
+}
+.project-card:hover .project-card__content h3,
+.project-card:hover .project-card__meta{
+  color: var(--color-white);
+}
+
+/* when the card has the active class (toggled by touch/click), show overlay */
+.project-card.active .project-card__overlay{
+  opacity:1;
+  background: var(--color-primary-variant);
+  pointer-events:auto;
+}
+
+/* image also clickable/hovered directly */
+.project-card__imgWrap:hover{ background: transparent; }
+
+@media (max-width:1100px){
+  .projects__grid{ width:var(--container-width-md); grid-template-columns: repeat(2, 1fr) }
+}
+@media (max-width:700px){
+  .projects__grid{ width:var(--container-width-sm); grid-template-columns: 1fr }
+  .project-card__inner{ min-height:160px }
+}
+
+/* petit screen */
+@media (max-width:700px){
+  .project-card__imgWrap{
+    position:relative !important;
+    top:auto; left:auto; right:auto; bottom:auto;
+    opacity:1 !important;
+    transform:none !important;
+    margin-bottom:0.8rem;
+    background: var(--color-primary-variant);
+    padding:0.6rem;
+    border-radius:8px;
+    height:auto;
+  }
+  .project__img{ max-height:240px; width:100%; height:auto; object-fit:cover }
+}
