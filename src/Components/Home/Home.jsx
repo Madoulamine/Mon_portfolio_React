@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 import { FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa';
+import monCV from "../../Black Modern Professional Resume (2).pdf";
 
 const Home = () => {
   const fullName = ' M LAMINE DIALLO ';
@@ -34,14 +35,14 @@ const Home = () => {
           </h1>
           <p className="home__greeting">Développer avec passion, livrer avec précision</p>
           <div className="home__socials" aria-label="Réseaux sociaux">
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
+            <a href="https://linkedin.com/in/mamadou-lamine-diallo-ba1636358" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
             <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebook /></a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="Github"><FaGithub /></a>
+            <a href="https://github.com/MadouLamine" target="_blank" rel="noreferrer" aria-label="Github"><FaGithub /></a>
           </div>
 
           <div className="home__cta">
             <a className="btn" href="#contact">Contact Moi</a>
-            <a className="btn btn-primary" href="/CV.pdf" download>Telecharge mon CV</a>
+            <a className="btn btn-primary" href={monCV} download>Télécharge mon CV</a>
           </div>
         </div>
 
