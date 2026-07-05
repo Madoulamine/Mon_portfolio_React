@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { AiOutlineHome } from 'react-icons/ai';
 import {  BiUser } from 'react-icons/bi';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GoChecklist} from 'react-icons/go';
 import { BiMessageSquareDetail } from 'react-icons/bi';
+import { BsSun, BsMoon } from 'react-icons/bs';
+import { ThemeContext } from '../../Context/ThemeContext';
 import './Navbar.css';
 
 export default function Navbar() {
   const [active, setActive] = useState('#');
+  const { isDark, toggleTheme } = useContext(ThemeContext);
 
   return (
     <nav>
@@ -42,6 +45,10 @@ export default function Navbar() {
       >
         <BiMessageSquareDetail />
       </a>
+
+      <button className="theme-toggle" onClick={toggleTheme} title={isDark ? "Light mode" : "Dark mode"}>
+        {isDark ? <BsSun /> : <BsMoon />}
+      </button>
       
     </nav>
   )

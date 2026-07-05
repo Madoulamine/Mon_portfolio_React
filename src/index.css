@@ -8,9 +8,11 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
+    transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease;
 }
 
 :root{
+    /* Dark theme (default) */
     --color-bg: #1f1f38;
     --color-bg-variant: #2c2c6c;
     --color-primary: #4db5ff;
@@ -25,6 +27,16 @@
     --transition: All 400ms ease
 }
 
+body.light-mode {
+    /* Light theme */
+    --color-bg: #f8f9fa;
+    --color-bg-variant: #e9ecef;
+    --color-primary: #0066cc;
+    --color-primary-variant: rgba(0, 102, 204, 0.1);
+    --color-white: #1a1a1a;
+    --color-light: rgba(0, 0, 0, 0.6);
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -36,4 +48,5 @@ body{
     background: var(--color-bg);
     color: var(--color-white);
     line-height: 1.7;
+    transition: background-color 400ms ease, color 400ms ease;
 }
