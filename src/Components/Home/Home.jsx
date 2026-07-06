@@ -20,14 +20,29 @@ const Home = () => {
   // Typing animation for the name
   useEffect(() => {
     setMounted(true);
-    let i = 0;
-    const speed = 120;
-    const timer = setInterval(() => {
-      setTyped((prev) => prev + fullName.charAt(i));
-      i += 1;
-      if (i >= fullName.length) clearInterval(timer);
-    }, speed);
-    return () => clearInterval(timer);
+    let timer;
+
+    const startTyping = () => {
+      setTyped('');
+      let i = 0;
+      const speed = 120;
+      clearInterval(timer);
+      timer = setInterval(() => {
+        setTyped((prev) => fullName.slice(0, i + 1));
+        i += 1;
+        if (i >= fullName.length) clearInterval(timer);
+      }, speed);
+    };
+
+    startTyping();
+
+    const handleReset = () => startTyping();
+    window.addEventListener('reset-typewriter', handleReset);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('reset-typewriter', handleReset);
+    };
   }, []);
 
   // Role rotation

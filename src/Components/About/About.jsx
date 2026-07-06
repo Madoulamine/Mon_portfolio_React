@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import AboutImage from "../../../public/Images/lamine_a_jour.jpeg";
+const AboutImage = "/Images/lamine_a_jour.jpeg";
 import './About.css';
 import { FaBriefcase, FaProjectDiagram, FaCode } from 'react-icons/fa';
 
@@ -41,12 +41,12 @@ const About = () => {
 
         <div className="about__right">
           <p className="about__text">
-            Étudiant en <span className="accent">Licence 4 — Génie Informatique</span> à l'Institut Supérieur
-            de Technologie de Mamou (IST-Mamou), je suis développeur <span className="accent">Full Stack</span> passionné
-            par la création d'applications web et mobiles modernes, fiables et centrées sur l'utilisateur.
+            Étudiant sortant en 2026 d'une <span className="accent">Licence 4 — Génie Informatique</span> à l'Institut Supérieur
+            de Technologie de Mamou (IST-Mamou), je suis développeur <span className="accent">Full Stack & Mobile</span> passionné
+            par les Mathématiques et la création d'applications web et mobiles modernes, fiables et centrées sur l'utilisateur.
           </p>
           <p className="about__text">
-            Attaché à la qualité du code et au travail d'équipe, je conçois des solutions digitales efficaces
+            Attaché à l'analyse et à la qualité du code, au travail d'équipe, je conçois des solutions digitales efficaces
             en utilisant des technologies comme <span className="accent">React, Node.js, Django et Flutter</span>.
             Mon objectif : transformer des idées en produits qui ont un vrai impact.
           </p>

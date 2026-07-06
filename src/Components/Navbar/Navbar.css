@@ -1,36 +1,51 @@
-nav{
-    background: rgba(0, 0, 0, 0.6);
+/* ── Floating bottom Navbar ── */
+.app-navbar {
+    background: rgba(22, 33, 62, 0.75);
     width: max-content;
-    display: block;
-    padding: 0.7rem 1.7rem;
-    z-index: 2;
+    padding: 0.9rem 2rem;
+    z-index: 100;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 2rem;
+    bottom: 1.8rem;
     display: flex;
-    gap: 0.8rem;
+    align-items: center;
+    gap: 1rem;
     border-radius: 3rem;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(77, 181, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-nav a{
+/* Nav links */
+.app-navbar a {
     background: transparent;
-    padding: 0.9rem;
+    padding: 0.95rem;
     border-radius: 50%;
     display: flex;
-    color:var(--color-ligth);
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-nav a:hover {
-    background: rgba(0, 0, 0, 0.4);
-}
-nav a.active {
-    background: var(--color-primary);
-    color: var(--color-bg);
+    align-items: center;
+    justify-content: center;
+    color: var(--color-light);
+    font-size: 1.6rem;
+    position: relative;
+    transition: background 300ms ease, color 300ms ease, transform 200ms ease;
 }
 
+.app-navbar a:hover {
+    background: rgba(77, 181, 255, 0.12);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.app-navbar a.active {
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(77, 181, 255, 0.4);
+}
+
+/* Native tooltips used instead */
+
+/* Theme toggle button — même style que nav a */
 .theme-toggle {
     background: transparent;
     border: none;
@@ -40,12 +55,30 @@ nav a.active {
     align-items: center;
     justify-content: center;
     color: var(--color-light);
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     cursor: pointer;
-    transition: var(--transition);
+    transition: background 300ms ease, color 300ms ease, transform 200ms ease;
+    position: relative;
+    margin-left: 0.15rem;
 }
 
 .theme-toggle:hover {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(77, 181, 255, 0.12);
     color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 480px) {
+    .app-navbar {
+        padding: 0.65rem 1.2rem;
+        gap: 0.4rem;
+        bottom: 1.2rem;
+    }
+
+    .app-navbar a,
+    .theme-toggle {
+        padding: 0.8rem;
+        font-size: 1.3rem;
+    }
 }
