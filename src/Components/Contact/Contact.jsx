@@ -6,8 +6,8 @@ const contactInfos = [
   {
     icon: <FaWhatsapp />,
     label: 'WhatsApp',
-    value: '+224 623 30 46 74',
-    href: 'https://wa.me/224623304674',
+    value: '+224 611 22 46 98',
+    href: 'https://wa.me/224611224698',
   },
   {
     icon: <FaEnvelope />,

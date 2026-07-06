@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
-import { FaLinkedin, FaFacebook, FaGithub, FaDownload, FaPaperPlane } from 'react-icons/fa';
-import monCV from "../../Black Modern Professional Resume (2).pdf";
+import { FaLinkedin, FaFacebook, FaGithub, FaDownload, FaPaperPlane, FaEye } from 'react-icons/fa';
+import monCV from "../../Mon_CV_Pro_2026.pdf";
 
 const roles = [
   'Full Stack Developer',
@@ -87,8 +87,8 @@ const Home = () => {
           </div>
 
           <div className="home__cta">
-            <a className="btn btn-primary" href={monCV} download>
-              <FaDownload /> Télécharger CV
+            <a className="btn btn-primary" href={monCV} target="_blank" rel="noopener noreferrer">
+              <FaEye /> Consulter le CV
             </a>
             <a className="btn" href="#contact">
               <FaPaperPlane /> Me contacter
