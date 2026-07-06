@@ -1,27 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
-import { FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaGithub, FaDownload, FaPaperPlane } from 'react-icons/fa';
 import monCV from "../../Black Modern Professional Resume (2).pdf";
+
+const roles = [
+  'Full Stack Developer',
+  'React Developer',
+  'Problem Solver',
+  'Passionné du Digital',
+];
 
 const Home = () => {
   const fullName = ' M LAMINE DIALLO ';
   const [typed, setTyped] = useState('');
   const [mounted, setMounted] = useState(false);
+  const [roleIdx, setRoleIdx] = useState(0);
+  const [roleVisible, setRoleVisible] = useState(true);
 
+  // Typing animation for the name
   useEffect(() => {
-    // trigger entrance animations
     setMounted(true);
-
-    // typing animation for the name
     let i = 0;
-    const speed = 120; // ms per character
+    const speed = 120;
     const timer = setInterval(() => {
       setTyped((prev) => prev + fullName.charAt(i));
       i += 1;
       if (i >= fullName.length) clearInterval(timer);
     }, speed);
-
     return () => clearInterval(timer);
+  }, []);
+
+  // Role rotation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleVisible(false);
+      setTimeout(() => {
+        setRoleIdx((prev) => (prev + 1) % roles.length);
+        setRoleVisible(true);
+      }, 500);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -33,16 +51,33 @@ const Home = () => {
           <h1 className="home__title">Je suis&nbsp;
             <span className="home__name">{typed}<span className="home__cursor">&nbsp;</span></span>
           </h1>
-          <p className="home__greeting">Développer avec passion, livrer avec précision</p>
+
+          {/* Animated role subtitle */}
+          <p className={`home__role ${roleVisible ? 'role--visible' : 'role--hidden'}`}>
+            {roles[roleIdx]}
+          </p>
+
+          <p className="home__tagline">Développer avec passion, livrer avec précision.</p>
+
           <div className="home__socials" aria-label="Réseaux sociaux">
-            <a href="https://linkedin.com/in/mamadou-lamine-diallo-ba1636358" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebook /></a>
-            <a href="https://github.com/MadouLamine" target="_blank" rel="noreferrer" aria-label="Github"><FaGithub /></a>
+            <a href="https://linkedin.com/in/mamadou-lamine-diallo-ba1636358" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="social--linkedin">
+              <FaLinkedin />
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="social--facebook">
+              <FaFacebook />
+            </a>
+            <a href="https://github.com/MadouLamine" target="_blank" rel="noreferrer" aria-label="Github" className="social--github">
+              <FaGithub />
+            </a>
           </div>
 
           <div className="home__cta">
-            <a className="btn" href="#contact">Contact Moi</a>
-            <a className="btn btn-primary" href={monCV} download>Télécharge mon CV</a>
+            <a className="btn btn-primary" href={monCV} download>
+              <FaDownload /> Télécharger CV
+            </a>
+            <a className="btn" href="#contact">
+              <FaPaperPlane /> Me contacter
+            </a>
           </div>
         </div>
 
